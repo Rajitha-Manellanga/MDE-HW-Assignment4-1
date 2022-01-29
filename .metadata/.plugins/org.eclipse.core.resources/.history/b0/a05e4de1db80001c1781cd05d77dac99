@@ -1,0 +1,9 @@
+grammar org.xtext.example.bts.BTS with org.eclipse.xtext.common.Terminals
+
+generate bTS "http://www.xtext.org/example/bts/BTS"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

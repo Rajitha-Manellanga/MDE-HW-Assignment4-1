@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bTS" nsURI="http://www.xtext.org/example/bts/BTS" nsPrefix="bTS">
+  <eClassifiers xsi:type="ecore:EClass" name="BTS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Type" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Baggage" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Booking" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ticket" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Passenger" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Payment" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OnlinePayment" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//Payment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KIOSK" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//Payment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bus" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="City" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="busstops" unique="false"
+        upperBound="-1" eType="#//Point"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Point">
+    <eLiterals name="ARRIVAL_POINT" literal="ARRIVAL_POINT"/>
+    <eLiterals name="DEPARTURE_POINT" value="1" literal="DEPARTURE_POINT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Seat" eSuperTypes="#//Type"/>
+</ecore:EPackage>

@@ -1,0 +1,85 @@
+grammar org.xtext.example.bts.BTS with org.eclipse.xtext.common.Terminals
+
+generate bTS "http://www.xtext.org/example/bts/BTS"
+
+BTS:
+	(elements+=Type)*;
+	
+Type:
+	City | Seat | Bus | Passenger | Ticket | Booking | Baggage | Payment | OnlinePayment | KIOSK;
+
+
+Bus:
+	'Bus' id=ID '{'
+			capacity=INT';'
+			bookedSeats=INT';'
+			busStop=Point';'
+			(seats+=Seat)*
+		
+	'}'
+;
+
+Seat:
+	 (many?='many')? name=ID ':' type=[Bus];
+	
+
+City:
+	 'City' name = ID '{'
+	 	busstops += Point*
+	 '}'
+;
+
+Passenger:
+	'Passenger' id = ID '{'
+		firstName=STRING';'
+		lastName=STRING';'
+		email=STRING';'
+		phone=STRING';'
+	'}'
+;
+
+Booking:
+	'Booking' id = ID '{'
+		payment_date=STRING';'
+		status+=BookStatus';'
+	'}'
+;
+
+
+
+Baggage:
+	'Baggage'id = ID ';' 
+;
+
+Ticket:
+	'Ticket' name = ID
+;
+
+
+Payment:
+	'Payment' name = ID
+;
+
+OnlinePayment:
+	'OnlinePayment' name = ID ('extends' superType=[Payment]) '{'
+		
+	'}'
+;
+
+KIOSK:
+	'KIOSK' name = ID  ('extends' superType=[Payment]) '{'
+		
+	'}'
+;
+
+
+
+
+
+enum Point:
+	ARRIVAL_POINT|DEPARTURE_POINT;
+	
+enum BookStatus:
+	BOOKED|RESERVED|CANCELLED;
+
+

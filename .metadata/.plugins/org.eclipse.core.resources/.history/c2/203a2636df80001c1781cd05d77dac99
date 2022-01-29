@@ -1,0 +1,63 @@
+grammar org.xtext.example.bts.BTS with org.eclipse.xtext.common.Terminals
+
+generate bTS "http://www.xtext.org/example/bts/BTS"
+
+BTS:
+	(elements+=Type)*;
+	
+Type:
+	City | Seat | Bus | Passenger | Ticket | Booking | Baggage | Payment | OnlinePayment | KIOSK;
+
+Baggage:
+	'Baggage'name = ID
+;
+
+Booking:
+	'Booking' name = ID
+;
+
+Ticket:
+	'Ticket' name = ID
+;
+
+Passenger:
+	'Passenger' name = ID
+;
+
+Payment:
+	'Payment' name = ID
+;
+
+OnlinePayment:
+	'OnlinePayment' name = ID ('extends' superType=[Payment]) '{'
+		
+	'}'
+;
+
+KIOSK:
+	'KIOSK' name = ID  ('extends' superType=[Payment]) '{'
+		
+	'}'
+;
+
+
+Bus:
+	'Bus' name=ID '{'
+	
+		
+	'}'
+;
+
+
+City:
+	 'City' name = ID '{'
+	 	busstops += Point*
+	 '}'
+;
+
+enum Point:
+	ARRIVAL_POINT|DEPARTURE_POINT;
+	
+Seat:
+	'Seat' name = ID;
+
